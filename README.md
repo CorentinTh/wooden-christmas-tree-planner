@@ -1,28 +1,46 @@
-## Usage
+<h1 align="center">
+Wooden Christmas Tree Planner
+</h1>
 
-```bash
-$ npm install # or pnpm install or yarn install
+Plan your next diy wooden christmas tree! Get the dimensions of the wood you need to buy, and the number of battens you need to cut.
+[Website](https://wooden-christmas-tree-planner.thomasset.me/)
+
+## Development
+
+### Project Setup
+
+```sh
+pnpm install
 ```
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+### Compile and Hot-Reload for Development
 
-## Available Scripts
+```sh
+pnpm dev
+```
 
-In the project directory, you can run:
+### Type-Check, Compile and Minify for Production
 
-### `npm run dev`
+```sh
+pnpm build
+```
 
-Runs the app in the development mode.<br>
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+### Run Unit Tests with [Vitest](https://vitest.dev/)
 
-### `npm run build`
-
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+```sh
+pnpm test
+```
 
 ## Deployment
 
 Learn more about deploying your application with the [documentations](https://vitejs.dev/guide/static-deploy.html)
+
+## Credits
+
+Coded with ❤️ by [Corentin Thomasset](https://github.com/CorentinTh)
+
+This project is continuously deployed using vercel.com.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
