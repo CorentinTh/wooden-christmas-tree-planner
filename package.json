@@ -1,0 +1,25 @@
+{
+  "name": "wooden-christmas-tree-planifier",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "preview": "vite preview",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "solid-js": "^1.8.5"
+  },
+  "devDependencies": {
+    "@unocss/reset": "^0.57.5",
+    "jsdom": "^22.1.0",
+    "typescript": "^5.2.2",
+    "unocss": "^0.57.5",
+    "vite": "^5.0.0",
+    "vite-plugin-solid": "^2.7.2",
+    "vitest": "^0.34.6"
+  }
+}
