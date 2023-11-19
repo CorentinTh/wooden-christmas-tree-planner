@@ -12,7 +12,7 @@ export const Footer: Component = () => {
           <Link href="https://www.buymeacoffee.com/cthmsst">Support me</Link>
         </div>
         <div>
-          Made with ❤️ by <Link href="https://github.com/CorentinTh">Corentin Thomasset</Link>
+          Made with <span i-tabler:heart inline-block mb--2px /> by <Link href="https://github.com/CorentinTh">Corentin Thomasset</Link>
         </div>
       </div>
     </div>
