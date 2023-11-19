@@ -34,7 +34,7 @@ export const Planifier: Component = () => {
 
   return (
     <div>
-      <div flex gap-4 flex flex-col md:flex-row md:items-start items-center>
+      <div flex gap-4 flex-col md:flex-row md:items-start items-center>
         <div flex-1 flex flex-col gap-2>
           <div flex items-center gap-4>
             <div w-200px>
