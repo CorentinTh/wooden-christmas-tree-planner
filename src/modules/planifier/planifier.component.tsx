@@ -14,62 +14,89 @@ export const Planifier: Component = () => {
   const [getBattenHeight, setBattenHeight] = createStoredSignal('planifier:batten-height', 10);
   const [getSeparatorHeight, setSeparatorHeight] = createStoredSignal('planifier:separator-height', 0);
 
-  const res = createMemo(() =>
-    getChristmasTreeWoodDimensions({
+  const res = createMemo(() => {
+    if (!getTreeHeight() || !getTreeBaseDiameter() || !getBattenHeight())
+      return {
+        totalBattenLength: 0,
+        battenCount: 0,
+        reduceStep: 0,
+        realTreeHeight: 0,
+        battenDetails: [],
+      };
+
+    return getChristmasTreeWoodDimensions({
       battenHeight: getBattenHeight(),
-      separatorHeight: getSeparatorHeight(),
+      separatorHeight: getSeparatorHeight() ?? 0,
       treeBaseDiameter: getTreeBaseDiameter(),
       treeHeight: getTreeHeight(),
-    }),
-  );
+    });
+  });
 
   return (
-    <div flex gap-2 flex flex-col md:flex-row items-start>
-      <div min-w-600px flex gap-2 flex-col>
-        <div flex items-center gap-4>
-          <div w-150px>Tree height:</div>
-          <NumberInput value={getTreeHeight()} onInput={setTreeHeight} min={1} placeholder="ex: 120" />
-          <div text-sm>{`Golden ratio from diameter: ${formatLength(getTreeBaseDiameter() / GOLDEN_RATIO)}`}</div>
+    <div>
+      <div flex gap-4 flex flex-col md:flex-row md:items-start items-center>
+        <div flex-1 flex flex-col gap-2>
+          <div flex items-center gap-4>
+            <div w-200px>
+              Tree height:
+              <div text-xs op-60>{`Golden ratio of diameter: ${formatLength(getTreeBaseDiameter() / GOLDEN_RATIO)}`}</div>
+            </div>
+            <NumberInput value={getTreeHeight()} onInput={setTreeHeight} min={1} placeholder="ex: 120" />
+          </div>
+
+          <div flex items-center gap-4>
+            <div w-200px>
+              Tree base diameter:
+              <div text-xs op-60>{`Golden ratio of height: ${formatLength(getTreeHeight() * GOLDEN_RATIO)}`}</div>
+            </div>
+            <NumberInput value={getTreeBaseDiameter()} onInput={setTreeBaseDiameter} min={1} placeholder="ex: 60" />
+          </div>
+
+          <div flex items-baseline gap-4>
+            <div w-200px>Batten height:</div>
+            <NumberInput value={getBattenHeight()} onInput={setBattenHeight} min={1} placeholder="ex: 10" />
+          </div>
+          <div flex items-baseline gap-4 mb-5>
+            <div w-200px>Separator height:</div>
+            <NumberInput value={getSeparatorHeight()} onInput={setSeparatorHeight} min={0} placeholder="ex: 0" />
+          </div>
+
+          <div flex gap-4>
+            <div w-200px>Total batten length:</div>
+            {formatLength(res().totalBattenLength)}
+          </div>
+          <div flex gap-4>
+            <div w-200px>Batten count:</div>
+            {res().battenCount}
+          </div>
+          <div flex gap-4>
+            <div w-200px>Reduce step:</div>
+            {formatLength(res().reduceStep)}
+          </div>
+          <div flex gap-4>
+            <div w-200px>Final tree height:</div>
+            {formatLength(res().realTreeHeight)}
+          </div>
+          <div flex gap-4>
+            <div w-200px>Separators:</div>
+            {res().battenDetails.length - 1} pieces x {formatLength(getSeparatorHeight())}
+          </div>
         </div>
 
-        <div flex items-baseline gap-4>
-          <div w-150px>Tree base diameter:</div>
-          <NumberInput value={getTreeBaseDiameter()} onInput={setTreeBaseDiameter} min={1} placeholder="ex: 60" />
-          <div text-sm>{`Golden ratio from height: ${formatLength(getTreeHeight() * GOLDEN_RATIO)}`}</div>
-        </div>
-
-        <div flex items-baseline gap-4>
-          <div w-150px>Batten height:</div>
-          <NumberInput value={getBattenHeight()} onInput={setBattenHeight} min={1} placeholder="ex: 10" />
-        </div>
-        <div flex items-baseline gap-4 mb-5>
-          <div w-150px>Separator height:</div>
-          <NumberInput value={getSeparatorHeight()} onInput={setSeparatorHeight} min={0} placeholder="ex: 0" />
-        </div>
-
-        <div flex gap-4>
-          <div w-150px>Total batten length:</div>
-          {formatLength(res().totalBattenLength)}
-        </div>
-        <div flex gap-4>
-          <div w-150px>Batten count:</div>
-          {res().battenCount}
-        </div>
-        <div flex gap-4>
-          <div w-150px>Reduce step:</div>
-          {formatLength(res().reduceStep)}
-        </div>
-        <div flex gap-4>
-          <div w-150px>Real tree height:</div>
-          {formatLength(res().realTreeHeight)}
-        </div>
-        <div flex gap-4>
-          <div w-150px>Separator count:</div>
-          {res().battenDetails.length - 1} pieces x {formatLength(getSeparatorHeight())} height
-        </div>
+        <Visualizer flex-grow-0 {...res()} treeBaseDiameter={getTreeBaseDiameter()} treeHeight={getTreeHeight()} separatorHeight={getSeparatorHeight()} battenHeight={getBattenHeight()} />
       </div>
 
-      <Visualizer {...res()} treeBaseDiameter={getTreeBaseDiameter()} treeHeight={getTreeHeight()} separatorHeight={getSeparatorHeight()} battenHeight={getBattenHeight()} flex-1 />
+      <div mt-4>
+        <div>Batten lengths:</div>
+        <div text-xs grid grid-cols-2 md:grid-cols-6 sm:grid-cols-4>
+          {res().battenDetails.map(({ width }, i) => (
+            <div p-l-16px>
+              - {formatLength(width)}
+              <span op-50>, half: {formatLength(width / 2)}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

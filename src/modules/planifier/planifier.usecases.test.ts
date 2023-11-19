@@ -3,7 +3,7 @@ import { getChristmasTreeWoodDimensions } from './planifier.usecases';
 
 describe('planifier usecases', () => {
   describe('getChristmasTreeWoodDimensions', () => {
-    test('', () => {
+    test('the amount of battens that is needed to build a christmas tree given its height and base diameter and the space between each batten', () => {
       expect(
         getChristmasTreeWoodDimensions({
           treeHeight: 100,
