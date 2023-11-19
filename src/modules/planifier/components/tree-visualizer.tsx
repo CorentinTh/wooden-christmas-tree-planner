@@ -32,7 +32,7 @@ export const Visualizer: Component<{
           <>
             <div
               style={{ width: `${cmToPixel(width)}px`, height: `${cmToPixel(props.battenHeight)}px` }}
-              class=" bg-current op-50 rounded border border-white w-full whitespace-nowrap flex items-center"
+              class="bg-gray dark:bg-current op-50 rounded border border-white w-full whitespace-nowrap flex items-center"
             />
             {props.separatorHeight > 0 && i < props.battenDetails.length - 1 && <div class="my-2px flex items-center" style={{ height: `${cmToPixel(props.separatorHeight)}px` }} />}
           </>

@@ -11,8 +11,8 @@ const GOLDEN_RATIO = 0.618;
 export const Planifier: Component = () => {
   const [getTreeHeight, setTreeHeight] = createStoredSignal('planifier:tree-height', 120);
   const [getTreeBaseDiameter, setTreeBaseDiameter] = createStoredSignal('planifier:tree-base-diameter', getTreeHeight() * GOLDEN_RATIO);
-  const [getBattenHeight, setBattenHeight] = createStoredSignal('planifier:batten-height', 10);
-  const [getSeparatorHeight, setSeparatorHeight] = createStoredSignal('planifier:separator-height', 0);
+  const [getBattenHeight, setBattenHeight] = createStoredSignal('planifier:batten-height', 4);
+  const [getSeparatorHeight, setSeparatorHeight] = createStoredSignal('planifier:separator-height', 2);
 
   const res = createMemo(() => {
     if (!getTreeHeight() || !getTreeBaseDiameter() || !getBattenHeight())

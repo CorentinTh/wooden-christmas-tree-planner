@@ -11,9 +11,12 @@
     "test": "vitest"
   },
   "dependencies": {
+    "plausible-tracker": "^0.3.8",
     "solid-js": "^1.8.5"
   },
   "devDependencies": {
+    "@iconify-json/tabler": "^1.1.96",
+    "@unocss/preset-icons": "^0.57.6",
     "@unocss/reset": "^0.57.5",
     "jsdom": "^22.1.0",
     "typescript": "^5.2.2",

@@ -9,7 +9,8 @@ import '@unocss/reset/sanitize/typography.css';
 import 'virtual:uno.css';
 
 import App from './App';
+import { setupTracker } from './modules/tracker/tracker';
 
-const root = document.getElementById('root');
+render(() => <App />, document.getElementById('root')!);
 
-render(() => <App />, root!);
+setupTracker();
