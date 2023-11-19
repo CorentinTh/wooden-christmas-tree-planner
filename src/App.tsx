@@ -6,7 +6,7 @@ function App() {
     <div dark:bg-background dark:text-white min-h-screen box-border overflow-auto flex flex-col max-w-screen>
       <MenuBar />
 
-      <div max-w-4xl mx-auto flex-1 px-16px w-full>
+      <div max-w-3xl mx-auto flex-1 px-16px w-full>
         <div mb-20 mt-16 max-w-600px mx-auto>
           <h1 text-center mt-0 mb-2>
             Wooden Christmas tree planner

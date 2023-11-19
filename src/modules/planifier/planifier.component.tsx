@@ -88,7 +88,7 @@ export const Planifier: Component = () => {
 
       <div mt-4>
         <div>Batten lengths:</div>
-        <div text-xs grid grid-cols-2 md:grid-cols-6 sm:grid-cols-4>
+        <div text-xs grid grid-cols-2 md:grid-cols-5 sm:grid-cols-4>
           {res().battenDetails.map(({ width }, i) => (
             <div p-l-16px>
               - {formatLength(width)}
